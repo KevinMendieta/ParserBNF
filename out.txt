@@ -1,0 +1,9 @@
+Expresion correcta
+Error: columna 10 , fin de entrada inesperado.
+Expresion correcta
+Expresion correcta
+Expresion correcta
+Error: columna 2, a caracter inesperado.
+Error: columna 3, s caracter inesperado.
+Error: columna 11, * caracter inesperado.
+Error: columna 10, * caracter inesperado.
