@@ -5,23 +5,38 @@ import java.io.*;
  */
 public class ParserD{
 
+    /* BNF used:
+     *C ::= E [(>|<|=)E]
+     *E ::= T{(+ | −)T}
+     *T ::= F{(∗ | ÷)F}
+     *F ::= a | b | c
+     */
     public static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
     public static BufferedWriter out = new BufferedWriter(new OutputStreamWriter(System.out));
     public static String token, line;
     public static int index;
     public static boolean isCorrect;
 
+    /*
+     *Moves token through the line.
+     */
     public static void nextToken(){
         if(index < line.length()) token = Character.toString(line.charAt(index));
         index++;
     }
 
+    /*
+     *Skips all the whites spaces until a non white space character apperas.
+     */
     public static void skip(){
         while(token.equals(" ")){
             nextToken();
         }
     }
 
+    /*
+     *Compares the token with a given character t.
+     */
     public static void expect(String t) throws Exception{
         if(token.equals(t)){
             nextToken();
@@ -36,6 +51,9 @@ public class ParserD{
         }
     }
 
+    /*
+     *C ::= E [(>|<|=)E]
+     */
     public static void pC() throws Exception{
         pE();
         skip();
@@ -49,6 +67,9 @@ public class ParserD{
         }
     }
 
+    /*
+     *E ::= T{(+ | −)T}
+     */
     public static void pE() throws Exception{
         pT();
         skip();
@@ -59,6 +80,9 @@ public class ParserD{
         }
     }
 
+    /*
+     *T ::= F{(∗ | ÷)F}
+     */
     public static void pT() throws Exception{
         pF();
         skip();
@@ -69,6 +93,9 @@ public class ParserD{
         }
     }
 
+    /*
+     *F ::= a | b | c
+     */
     public static void pF() throws Exception{
         skip();
         if((token.equals("a") || token.equals("b") || token.equals("c")) && (!token.equals("$") && isCorrect)){
