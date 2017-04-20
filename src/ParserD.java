@@ -15,85 +15,78 @@ public class ParserD {
         index++;
     }
     
+    public static void skip(){
+        while(token.equals(" ")){
+            nextToken();
+        }
+    }
+    
     public static void expect(String t) throws Exception{
         if(token.equals(t)){
             nextToken();
         }else{
-            out.write("Was expected " + t + " instead of "+token+"\n");
+            //out.write("Was expected " + t + " instead of "+token+"\n");
+            System.out.println("Was expected " + t + " instead of "+token+"\n");
         }
     }
     
     public static void pC() throws Exception{
         pE();
-        if(token.equals("<") || token.equals(">") || token.equals("=") || token.equals(" ")){
+        skip();
+        if((token.equals("<") || token.equals(">") || token.equals("=")) && (!token.equals("$"))){
             if(token.equals("<") || token.equals(">") || token.equals("=")){
                 nextToken();
                 pE();
-            }else{
-                while(!token.equals(" ")){
-                    nextToken();
-                }
-            }       
-        }else{
-            out.write("Was expected < > = instead of "+token+"\n");
+            }
+        }else if(!token.equals("$")){
+            //out.write("Was expected < > = instead of "+token+"\n");
+            System.out.println("Was expected < > = instead of "+token+"\n");
         }
     }
     
     public static void pE() throws Exception{
         pT();
-        while(token.equals("+") || token.equals("-") || token.equals(" ")){
+        skip();
+        while((token.equals("+") || token.equals("-")) && (!token.equals("$"))){
             if(token.equals("+") || token.equals("-")){
                 nextToken();
                 pT();
-            }else if(token.equals(" ")){
-                nextToken();
-            }         
+            }
         }
     }
     
     public static void pT() throws Exception{
         pF();
-        while(token.equals("*") || token.equals("/") || token.equals(" ")){
+        skip();
+        while((token.equals("*") || token.equals("/")) && (!token.equals("$"))){
             if(token.equals("*") || token.equals("/")){
                 nextToken();
                 pF();
-            }else if(token.equals(" ")){
-                nextToken();
             }
         }
     }
     
     public static void pF() throws Exception{
-        System.out.println("el token: "+token);
-        if(token.equals("a") || token.equals("b") || token.equals("c") || token.equals(" ")){
+        skip();
+        if((token.equals("a") || token.equals("b") || token.equals("c")) && (!token.equals("$"))){
             if(token.equals("a") || token.equals("b") || token.equals("c")){
                 nextToken();
-            }else{
-                while(!token.equals(" ")){
-                    nextToken();
-                }
             }
-        }else if(token.equals("(")){
-            if(token.equals("(")){
-                nextToken();
-                pE();
-                expect("");
-            }
-        }else{
-            out.write("Was expected a b c ( instead of "+token+"\n");
+        }else if(!token.equals("$")){
+            //out.write("Was expected a b c ( instead of "+token+"\n");
+            System.out.println("Was expected a b c instead of "+token+"\n");
         }
     }
     
     public static void main(String[] args)throws Throwable{
-        while(!in.ready() || true){
+        while(in.ready() || true){
             index = 0;
             line = in.readLine();
             nextToken();
-            System.out.println("letra "+line.substring(0, 1));
             pC();
             expect("$");
-            out.write("Succes "+line+"\n");
-            break;
+            System.out.println("Expresion correcta\n");
+            //out.write("Expresion correcta\n");
         }
         out.close();
     }        
