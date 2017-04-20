@@ -2,9 +2,9 @@
 A simple parser of expresions with a, b, c and operators +, -, /, *, whith $ as end of line.
 ## Examples
 **in**: 
-a$ 
-a + b = c_
-a     +      b      + c     +a-   b/a    *   c < c$_
+a$__
+a + b = c__
+a     +      b      + c     +a-   b/a    *   c < c$__
 a     +      b      + c     +a-   b/a    *   c < c    - a   / b    *  c+  a   $_
 a + b < c $_
 a_
