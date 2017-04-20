@@ -1,23 +1,23 @@
 # TCOM
 A simple parser of expresions with a, b, c and operators +, -, /, *, whith $ as end of line.
 ## Examples
-**in**: 
+**in**:<br />
 a$<br />
-a + b = c__
-a     +      b      + c     +a-   b/a    *   c < c$__
-a     +      b      + c     +a-   b/a    *   c < c    - a   / b    *  c+  a   $_
-a + b < c $_
-a_
-a saco_
-c        /* < b$_
-c /      * < a$_
-**out**:
-Correct_
-Error_
-Correct_
-Correct_
-Correct_
-Error_
-Error_
-Error_
-Error_
+a + b = c<br />
+a     +      b      + c     +a-   b/a    *   c < c$<br />
+a     +      b      + c     +a-   b/a    *   c < c    - a   / b    *  c+  a   $<br />
+a + b < c $<br />
+a<br />
+a saco<br />
+c        /* < b$<br />
+c /      * < a$<br />
+**out**:<br />
+Correc<br />
+Error<br />
+Correct<br />
+Correct<br />
+Correct<br />
+Error<br />
+Error<br />
+Error<br />
+Error<br />
