@@ -3,21 +3,21 @@ A simple parser of expresions with a, b, c and operators +, -, /, *, whith $ as 
 ## Examples
 **in**: 
 a$ 
-a + b = c 
-a     +      b      + c     +a-   b/a    *   c < c$ 
-a     +      b      + c     +a-   b/a    *   c < c    - a   / b    *  c+  a   $ 
-a + b < c $ 
-a 
-a saco 
-c        /* < b$ 
-c /      * < a$ 
+a + b = c_
+a     +      b      + c     +a-   b/a    *   c < c$_
+a     +      b      + c     +a-   b/a    *   c < c    - a   / b    *  c+  a   $_
+a + b < c $_
+a_
+a saco_
+c        /* < b$_
+c /      * < a$_
 **out**:
-Correct 
-Error 
-Correct 
-Correct 
-Correct 
-Error 
-Error 
-Error 
-Error 
+Correct_
+Error_
+Correct_
+Correct_
+Correct_
+Error_
+Error_
+Error_
+Error_
