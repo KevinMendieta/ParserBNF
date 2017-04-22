@@ -1,4 +1,7 @@
 a$
+a+$
+a<b$
+a/*$
 a + b = c
 a     +      b      + c     +a-   b/a    *   c < c$
 a     +      b      + c     +a-   b/a    *   c < c    - a   / b    *  c+  a   $

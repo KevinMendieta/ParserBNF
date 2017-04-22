@@ -3,6 +3,8 @@ A simple parser of expresions with a, b, c and operators +, -, /, *, whith $ as 
 ## Examples
 **in**:<br />
 a$<br />
+a+$<br />
+a < b<br />
 a + b = c<br />
 a     +      b      + c     +a-   b/a    *   c < c$<br />
 a     +      b      + c     +a-   b/a    *   c < c    - a   / b    *  c+  a   $<br />

@@ -1,4 +1,7 @@
 Expresion correcta
+Error: columna 3, $ caracter inesperado.
+Expresion correcta
+Error: columna 3, * caracter inesperado.
 Error: columna 10 , fin de entrada inesperado.
 Expresion correcta
 Expresion correcta
