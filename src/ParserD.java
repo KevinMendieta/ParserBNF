@@ -98,9 +98,9 @@ public class ParserD{
      */
     public static void pF() throws Exception{
         skip();
-        if((token.equals("a") || token.equals("b") || token.equals("c")) && (!token.equals("$") && isCorrect)){
+        if((token.equals("a") || token.equals("b") || token.equals("c")) &&  isCorrect){
             nextToken();
-        }else if(!token.equals("$") && isCorrect){
+        }else if(isCorrect){
             out.write("Error: columna " + index + ", " + token + " caracter inesperado.\n");
             //System.out.println("Was expected a b c instead of "+token+"\n");
             isCorrect = false;
@@ -108,7 +108,7 @@ public class ParserD{
     }
 
     public static void main(String[] args)throws Throwable{
-        while(in.ready()){
+        while(!in.ready()){
             index = 0;
             isCorrect = true;
             line = in.readLine();
@@ -116,6 +116,7 @@ public class ParserD{
             pC();
             expect("$");
             if (isCorrect) out.write("Expresion correcta\n");
+            //if (isCorrect) System.out.println("Expresion correcta\n");
         }
         out.close();
     }
