@@ -12,16 +12,19 @@ public class ParserD{
      *T ::= F{(∗ | ÷)F}
      *F ::= a | b | c | (E)
      */
-    
+
     public static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
     public static BufferedWriter out = new BufferedWriter(new OutputStreamWriter(System.out));
     public static String token, line;
     public static int index;
     public static boolean isCorrect;
     public static HashSet<String> set;
-    
+
+    /*
+     *Fills the set with the correct characters.
+     */
     public static void fillSet(){
-        set = new HashSet<String>();
+        set = new HashSet<>();
         set.add("a");
         set.add("b");
         set.add("c");
@@ -37,7 +40,7 @@ public class ParserD{
         set.add("$");
         set.add(" ");
     }
-    
+
     /*
      *Moves token through the line.
      */
@@ -73,7 +76,7 @@ public class ParserD{
             if (t.equals("$")){
                 out.write("Error: columna " + index + " , fin de entrada inesperado.\n");
             }else{
-                out.write("Error: columna " + index + " , " + "se esperaba: " + t + "en vez de: " + token + "\n");
+                out.write("Error: columna " + index + " , se esperaba: " + t + "en vez de: " + token + "\n");
             }
             isCorrect = false;
         }
