@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.HashSet;
 
 /**
  * @author KevinMendieta
@@ -9,26 +10,53 @@ public class ParserD{
      *C ::= E [(>|<|=)E]
      *E ::= T{(+ | −)T}
      *T ::= F{(∗ | ÷)F}
-     *F ::= a | b | c
+     *F ::= a | b | c | (E)
      */
+    
     public static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
     public static BufferedWriter out = new BufferedWriter(new OutputStreamWriter(System.out));
     public static String token, line;
     public static int index;
     public static boolean isCorrect;
-
+    public static HashSet<String> set;
+    
+    public static void fillSet(){
+        set = new HashSet<String>();
+        set.add("a");
+        set.add("b");
+        set.add("c");
+        set.add("(");
+        set.add(")");
+        set.add("/");
+        set.add("*");
+        set.add("+");
+        set.add("-");
+        set.add("=");
+        set.add("<");
+        set.add(">");
+        set.add("$");
+        set.add(" ");
+    }
+    
     /*
      *Moves token through the line.
      */
-    public static void nextToken(){
-        if(index < line.length()) token = Character.toString(line.charAt(index));
-        index++;
+    public static void nextToken() throws Exception{
+        if(index < line.length()){
+            token = Character.toString(line.charAt(index));
+            index++;
+            if(!set.contains(token)){
+                isCorrect = false;
+                //System.out.println("Error: columna " + index + ", " + token + " caracter inesperado.\n");
+                out.write("Error: columna " + index + ", " + token + " caracter inesperado.\n");
+            }            
+        }
     }
 
     /*
      *Skips all the whites spaces until a non white space character apperas.
      */
-    public static void skip(){
+    public static void skip() throws Exception{
         while(token.equals(" ")){
             nextToken();
         }
@@ -41,7 +69,7 @@ public class ParserD{
         if(token.equals(t)){
             nextToken();
         }else if (isCorrect){
-            //out.write("Was expected " + t + " instead of "+token+"\n");
+            //System.out.println("Error: columna " + index + " , " + "se esperaba: " + t + "en vez de: " + token);
             if (t.equals("$")){
                 out.write("Error: columna " + index + " , fin de entrada inesperado.\n");
             }else{
@@ -94,12 +122,17 @@ public class ParserD{
     }
 
     /*
-     *F ::= a | b | c
+     *F ::= a | b | c | (E)
      */
     public static void pF() throws Exception{
         skip();
-        if((token.equals("a") || token.equals("b") || token.equals("c")) &&  isCorrect){
-            nextToken();
+        if((token.equals("a") || token.equals("b") || token.equals("c") || token.equals("(")) &&  isCorrect){
+            if(token.equals("(")){
+                nextToken();pE();expect(")");
+            }else{
+                nextToken();
+            }
+            
         }else if(isCorrect){
             out.write("Error: columna " + index + ", " + token + " caracter inesperado.\n");
             //System.out.println("Was expected a b c instead of "+token+"\n");
@@ -108,7 +141,8 @@ public class ParserD{
     }
 
     public static void main(String[] args)throws Throwable{
-        while(!in.ready()){
+        while(in.ready()){
+            fillSet();
             index = 0;
             isCorrect = true;
             line = in.readLine();

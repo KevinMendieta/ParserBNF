@@ -2,11 +2,16 @@ Expresion correcta
 Error: columna 3, $ caracter inesperado.
 Expresion correcta
 Error: columna 3, * caracter inesperado.
-Error: columna 10 , fin de entrada inesperado.
+Error: columna 9 , fin de entrada inesperado.
 Expresion correcta
 Expresion correcta
 Expresion correcta
-Error: columna 2, a caracter inesperado.
+Error: columna 1, a caracter inesperado.
 Error: columna 3, s caracter inesperado.
 Error: columna 11, * caracter inesperado.
 Error: columna 10, * caracter inesperado.
+Error: columna 55 , se esperaba: )en vez de: $
+Error: columna 55 , fin de entrada inesperado.
+Expresion correcta
+Expresion correcta
+Error: columna 4, ) caracter inesperado.
